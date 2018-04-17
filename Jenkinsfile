@@ -6,6 +6,12 @@ pipeline {
    }
 
    stages {
+  
+      stage('Build') {
+         steps {
+            sh 'mvn clean package'
+         }
+      }
       stage('Development Tests') {
          when {
             beforeAgent true
@@ -14,12 +20,6 @@ pipeline {
          steps {
             echo "Run the development tests!"
          }
-      }      
-      stage('Build') {
-         steps {
-            sh 'mvn clean package'
-         }
-      }
-
+      }  
    }
 }
